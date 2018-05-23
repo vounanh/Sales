@@ -1,0 +1,60 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#+ 
+	class Field
+	{
+		public string Name { get; set; }
+		public string Type { get; set; }
+		public string DefaultValue { get; set; }
+		public string Validate { get; set; }
+	}
+	private static Field[] _fields =
+	{
+		new Field
+		{
+			Name = "Id",
+			Type = "int",
+			DefaultValue = "0",
+			Validate = ""
+		},
+		new Field
+		{
+			Name = "Date",
+			Type = "DateTime",
+			DefaultValue = "DateTime.Today",
+			Validate = ""
+		},
+		new Field
+		{
+			Name = "SectionId",
+			Type = "byte",
+			DefaultValue = "1",
+			Validate = "[Range(1, byte.MaxValue, ErrorMessage=\"設定可能な値\")]"
+		},
+		new Field
+		{
+			Name = "Client",
+			Type = "string",
+			DefaultValue = "string.Empty",
+			Validate = "[StringLength(32, ErrorMessage=\"32文字以内で設定\")]"
+		},
+		new Field
+		{
+			Name = "Title",
+			Type = "string",
+			DefaultValue = "string.Empty",
+			Validate = "[StringLength(32, ErrorMessage=\"32文字以内で設定\")]"
+		},
+		new Field
+		{
+			Name = "Price",
+			Type = "int",
+			DefaultValue = "0",
+			Validate = "[Range(0, 99999999, ErrorMessage=\"32文字以内で設定\")]"
+		}
+	};
+#>
