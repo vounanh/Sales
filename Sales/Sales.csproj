@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DbContext.cs" />
+    <Compile Include="DbSet.cs" />
     <Compile Include="EditViewModel.cs" />
     <Compile Include="EditViewModelT4.cs">
       <AutoGen>True</AutoGen>

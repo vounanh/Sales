@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
 
 namespace Sales
 {
-    class SalesDatabaseContext : DbContext
+    class DbSet<T>
     {
-        public DbSet<Result> Results { get; set; }
+        internal void Add(Result row)
+        {
+            throw new NotImplementedException();
+        }
 
-        internal int SaveChanges()
+        internal void Remove(Result row)
         {
             throw new NotImplementedException();
         }
