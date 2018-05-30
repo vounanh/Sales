@@ -34,7 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,12 +61,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditViewModel.cs" />
+    <Compile Include="EditViewModelT4.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditViewModelT4.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewModel.cs" />
+    <Compile Include="ListViewModelT4.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListViewModelT4.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="MainWindowViewModelT4.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainWindowViewModelT4.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelBase.cs" />
     <Compile Include="ResultT4.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResultT4.tt</DependentUpon>
     </Compile>
+    <Compile Include="SalesDatabaseContext.cs" />
+    <Compile Include="SalesModel.cs" />
+    <Compile Include="SalesMonthModel.cs" />
     <Compile Include="Section.cs" />
+    <Compile Include="Sections.cs" />
     <Compile Include="Years.cs" />
     <Page Include="EditView.xaml">
       <SubType>Designer</SubType>
@@ -105,6 +136,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="EditViewModelT4.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EditViewModelT4.cs</LastGenOutput>
+    </None>
+    <None Include="ListViewModelT4.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ListViewModelT4.cs</LastGenOutput>
+    </None>
+    <None Include="MainWindowViewModelT4.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MainWindowViewModelT4.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,7 +160,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

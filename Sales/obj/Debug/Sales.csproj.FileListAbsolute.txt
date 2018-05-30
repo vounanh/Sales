@@ -34,3 +34,5 @@ C:\Users\honka-1\Documents\Visual Studio 2012\Projects\Sales\Sales\obj\Debug\Sal
 C:\Users\honka-1\Documents\Visual Studio 2012\Projects\Sales\Sales\obj\Debug\Sales.g.resources
 C:\Users\honka-1\Documents\Visual Studio 2012\Projects\Sales\Sales\obj\Debug\Sales.Properties.Resources.resources
 C:\Users\honka-1\Documents\Visual Studio 2012\Projects\Sales\Sales\obj\Debug\Sales.csproj.GenerateResource.Cache
+C:\Users\honka-1\Documents\Visual Studio 2012\Projects\Sales\Sales\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\honka-1\Documents\Visual Studio 2012\Projects\Sales\Sales\obj\Debug\Sales_MarkupCompile.lref

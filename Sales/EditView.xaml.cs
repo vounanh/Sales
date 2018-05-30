@@ -21,6 +21,13 @@ namespace Sales
     {
         public EditView()
         {
+            DataContextChanged += (s, e) =>
+            {
+                EditViewModel x = DataContext as EditViewModel;
+                if (x == null) throw new InvalidCastException();
+                x.ShowDialogBox = () => ShowDialog() ?? false;
+                x.CloseDialogBox = p => DialogResult = p;
+            };
             InitializeComponent();
         }
     }

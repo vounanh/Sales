@@ -10,7 +10,21 @@
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 <Setter Property="Height" Value="35"/>
             </Style>
-        </Window.Resources>
+        <DataTemplate x:Key="date">
+            <TextBlock Text="{Binding Path=Date, StringFormat=yyyy/MM/dd}" />
+        </DataTemplate>
+        <DataTemplate x:Key="client">
+            <TextBlock Text="{Binding Path=Client}" />
+        </DataTemplate>
+        <DataTemplate x:Key="title">
+            <TextBlock Text="{Binding Path=Title}" />
+        </DataTemplate>
+        <DataTemplate x:Key="price">
+            <TextBlock
+                HorizontalAlignment="Right"
+                Text="{Binding Path=Price, StringFormat=##\,###\,###}" />
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -24,36 +38,59 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
             <StackPanel Margin="2" Grid.Column="0" Orientation="Horizontal">
-                <TextBlock Width="50" Text="9999年"/>
-                <TextBlock Width="50" Text="99月度"/>
-                <TextBlock Width="120" Text="ｘｘｘｘ部門"/>
+                <TextBlock 
+                    Width="50" 
+                    Text="{Binding Path=Year, StringFormat=####年, Mode=OneTime}"/>
+                <TextBlock 
+                    Width="50" 
+                    Text="{Binding Path=Month, StringFormat=##月度, Mode=OneTime}"/>
+                <TextBlock 
+                    Width="120" 
+                    Text="{Binding Path=Section, Mode=OneTime}"/>
             </StackPanel>
             <TextBlock
                 Margin="2"
                 Grid.Column="2"
                 HorizontalAlignment="Center"
-                Text="合計額：99,999,999"/>
+                Text="{Binding Path=TotalPrice, StringFormat=合計額：##\,###\,###, Mode=OneWay}"/>
         </Grid>
         <ListView
             Grid.Row="1"
             Margin="2"
             ItemContainerStyle="{StaticResource listViewItem}"
-            Background="LightGray">
+            Background="LightGray"
+            ItemsSource="{Binding Path=Items, Mode=OneWay}"
+            SelectedItem="{Binding Path=Item, Mode=TwoWay}"
+            SelectionMode="Single">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="100" Header="日付"/>
-                    <GridViewColumn Width="250" Header="得意先"/>
-                    <GridViewColumn Width="250" Header="件名"/>
-                    <GridViewColumn Width="100" Header="金額"/>
+                    <GridViewColumn 
+                        Width="100" 
+                        CellTemplate="{StaticResource date}"
+                        Header="日付"/>
+                    <GridViewColumn 
+                        Width="250" 
+                        CellTemplate="{StaticResource client}"
+                        Header="得意先"/>
+                    <GridViewColumn 
+                        Width="250" 
+                        CellTemplate="{StaticResource title}"
+                        Header="件名"/>
+                    <GridViewColumn 
+                        Width="100" 
+                        CellTemplate="{StaticResource price}"
+                        Header="金額"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <StackPanel Grid.Row="2">
-            <Button Content="最新の状態に更新"/>
-            <Button Content="追加"/>
-            <Button Content="変更"/>
-            <Button Content="削除"/>
-            <Button Content="閉じる"/>
+            <Button 
+                Command="{Binding Path=RenewCommand}"
+                Content="最新の状態に更新"/>
+            <Button Command="{Binding Path=AppendCommand}" Content="追加"/>
+            <Button Command="{Binding Path=UpdateCommand}" Content="変更"/>
+            <Button Command="{Binding Path=DeleteCommand}" Content="削除"/>
+            <Button Command="{Binding Path=CloseCommand}" Content="閉じる"/>
         </StackPanel>
     </Grid>
 </Window>

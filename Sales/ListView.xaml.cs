@@ -21,7 +21,26 @@ namespace Sales
     {
         public ListView()
         {
+            DataContextChanged += (s, e) =>
+            {
+                ListViewModel x = DataContext as ListViewModel;
+                if (x == null) throw new InvalidCastException();
+                x.ShowDialogBox = () => ShowDialog();
+                x.CloseDialogBox = Close;
+                x.ShowYesNoDialogBox = ExecuteShowYesNoDialogBox;
+            };
             InitializeComponent();
+        }
+
+        private bool ExecuteShowYesNoDialogBox(string message)
+        {
+            MessageBoxResult r =
+            MessageBox.Show(
+            message,
+            "Sales",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
+            return r == MessageBoxResult.Yes;
         }
     }
 }
